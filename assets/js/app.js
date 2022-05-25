@@ -25,7 +25,6 @@ import "phoenix_html"
 import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
-import * as Cesium from "cesium";
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}})
@@ -44,4 +43,8 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
-console.log(Cesium);
+Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0ZDkyNjM2YS01MGMyLTQxNTEtODQ1Ny1mOWFiNTI3N2RiZTkiLCJpZCI6OTQ3NjIsImlhdCI6MTY1MzI2MDUwOH0.TphXhYjBARWFvCxYXwHnJJS35p6jNmuxSt8odCVESW0';
+
+const viewer = new Cesium.Viewer('cesium-container', {
+  terrainProvider: Cesium.createWorldTerrain()
+});
