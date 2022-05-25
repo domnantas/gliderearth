@@ -45,6 +45,16 @@ window.liveSocket = liveSocket
 
 Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0ZDkyNjM2YS01MGMyLTQxNTEtODQ1Ny1mOWFiNTI3N2RiZTkiLCJpZCI6OTQ3NjIsImlhdCI6MTY1MzI2MDUwOH0.TphXhYjBARWFvCxYXwHnJJS35p6jNmuxSt8odCVESW0';
 
+const imageryProviderViewModels = Cesium.createDefaultImageryProviderViewModels()
+		.filter(providerViewModel => ["Bing Maps Aerial", "Bing Maps Aerial with Labels"].includes(providerViewModel.name))
+
 const viewer = new Cesium.Viewer('cesium-container', {
-  terrainProvider: Cesium.createWorldTerrain()
+  terrainProvider: Cesium.createWorldTerrain(),
+	sceneModePicker: false,
+	timeline: false,
+	navigationHelpButton: false,
+	animation: false,
+	terrainProviderViewModels: [],
+	imageryProviderViewModels,
+	selectedImageryProviderViewModel: imageryProviderViewModels[1],
 });
