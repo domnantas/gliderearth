@@ -15,9 +15,11 @@ defmodule Gliderearth.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Gliderearth.PubSub},
       # Start the Endpoint (http/https)
-      GliderearthWeb.Endpoint
+      GliderearthWeb.Endpoint,
       # Start a worker by calling: Gliderearth.Worker.start_link(arg)
       # {Gliderearth.Worker, arg}
+      # Start OGN data collection
+      Gliderearth.OgnClient
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
